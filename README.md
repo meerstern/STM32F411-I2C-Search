@@ -8,11 +8,17 @@ I2C Search code for STM32F411 Nucleo with HAL Library and CubeMX.
   * Open Debug COM port of STLink with Serial terminal software such as a teraterm.  
   * Baud rate of the COM port is 9600bps.  
   * You can search address of I2C devices.
-  
+  * Found devices are marked as "[0xXX]". 
+  * Then you can make your device code with HAL_I2C_Mem_Read & HAL_I2C_Mem_Write with found addresses. 
   
 
 <img src="https://github.com/meerstern/STM32F411-I2C-Search/blob/master/i2csearch.png" width="360">
 
+Sample of this code.  
+In this case, MPU6050 is connected to STM32F411 Nucleo.  
+Then the address is 0xD0 and HAL_I2C_Mem_Read(hi2c,0xD0,reg,I2C_MEMADD_SIZE_8BIT,&data,size,100),  
+HAL_I2C_Mem_Write(hi2c,0xD0,reg,I2C_MEMADD_SIZE_8BIT,data,size,100).  
+ 
 ## Others
  * This code can be easily ported to other stm32 MPU with HAL Library.  
  * Main Function is I2C_Dev_Search().  
